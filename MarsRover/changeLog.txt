@@ -1,10 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿
 
-namespace MarsRover
-{
-    class changeLog
-    {
-    }
-}
+========== Author: Devrim Mert Yoyen===============
+============== Start: 20/10/2021 ==================
+
+______________20/10/2020_________________
+Plateau Creating process Started
+	Plateau Object Created
+		Max Range Object Created
+			CheckMaxRange function created
+		Plateau Error List Created
+	Plateau Object Finished
+Plateau Creating process Finished
+Rover Creating Process Started
+	Rover Object Created
+		Position Object Created
+			Check Position Created
+		Route Object Created
+			CheckRoute Created
