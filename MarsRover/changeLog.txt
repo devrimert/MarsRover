@@ -18,4 +18,8 @@ Rover Creating Process Started
 			CheckPosition Function Created
 		Position Object Finished
 	Rover Object Finished
+	______________20/10/2020_________________
+	Rover addition mechanic added
+	Answer Check and loop added
+	all creation processes are done
 

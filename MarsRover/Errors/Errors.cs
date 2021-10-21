@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MarsRover.Errors
+﻿namespace MarsRover.Errors
 {
     internal static class Errors
     {
@@ -40,9 +36,9 @@ namespace MarsRover.Errors
             /// </summary>
             internal const string RCE04 = "Rovers route data can consist only one capital character.('N', 'W', 'S', 'E')";
             /// <summary>
-            /// There is another rover in given position for rover.
+            /// There is another rover in given position for the rover.
             /// </summary>
-            internal const string RCE05 = "There is another rover in given position for rover.";
+            internal const string RCE05 = "There is another rover in given position for the rover.";
             /// <summary>
             /// Given position for rover is out of plateaus range.
             /// </summary>
@@ -57,7 +53,11 @@ namespace MarsRover.Errors
             /// <summary>
             /// Move data can consist only capital characters.('L', 'R', 'M').
             /// </summary>
-            internal const string MCE04 = "Move data can consist only capital characters.('L', 'R', 'M')";
+            internal const string MCE02 = "Move data can consist only capital characters.('L', 'R', 'M')";
+            /// <summary>
+            /// Rovers move data can not be left blank.
+            /// </summary>
+            internal const string MCE03 = "Rovers move data can not be left blank.";
 
         }
         internal static class RoverMoveErrors

@@ -33,7 +33,11 @@ namespace MarsRover.Objects
     {
         public int X { get; set; }
         public int Y { get; set; }
-
+        /// <summary>
+        /// Checks the given coordinates is valid or not
+        /// </summary>
+        /// <param name="CoordinateString">Max Range coordinates for plateau</param>
+        /// <returns></returns>
         public string CheckRange(string CoordinateString)
         {
             MaxRange coordinate = new MaxRange();

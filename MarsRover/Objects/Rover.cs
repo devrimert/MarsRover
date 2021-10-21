@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using MarsRover.Enums;
+using System;
 using System.Text.RegularExpressions;
-using MarsRover.Enums;
 
 namespace MarsRover.Objects
 {
@@ -11,7 +9,7 @@ namespace MarsRover.Objects
         public int ID { get; set; }
         public Position Position { get; set; }
         public bool IsBlocked { get; set; }
-        public string moveString { get; set; }
+        public Move Move { get; set; }
 
         public Rover()
         {
@@ -26,7 +24,12 @@ namespace MarsRover.Objects
         public int Y { get; set; }
         
         public RouteEnums.Route Route { get; set; }
-
+        /// <summary>
+        /// Checks given position is valid or not.
+        /// </summary>
+        /// <param name="position">Position of new rover.</param>
+        /// <param name="plateau">The plateau which rovers adding on.</param>
+        /// <returns></returns>
         public string CheckPosition(string position, Plateau plateau)
         {
             if (position == "")
@@ -34,7 +37,7 @@ namespace MarsRover.Objects
             string[] totalPos = position.Split(" ");
             string[] coords = { totalPos[0], totalPos[1] };
 
-            if (position == null || coords.Length != 2)
+            if (position == null || totalPos.Length !=3 || coords.Length != 2)
                 return (Errors.Errors.RoverCreationErrors.RCE03);
             if (!Regex.IsMatch(coords[0], "^[0-9]*$") || !Regex.IsMatch(coords[1], "^[0-9]*$"))
                 return (Errors.Errors.RoverCreationErrors.RCE01);
@@ -56,7 +59,7 @@ namespace MarsRover.Objects
                 return Errors.Errors.RoverCreationErrors.RCE06;
             foreach(Rover rover in plateau.Rovers)
             {
-                if (this.X.Equals(rover.Position.X)&&this.Y.Equals(rover.Position.Y))
+                if (Convert.ToInt32(coords[0]) == rover.Position.X && Convert.ToInt32(coords[1]) == rover.Position.Y)
                     return Errors.Errors.RoverCreationErrors.RCE05;
             }
 
@@ -69,7 +72,37 @@ namespace MarsRover.Objects
         }
     }
     public class Move
-    {
+    {  
+        public MoveEnums.MovePath[] MovePaths { get; set; }
+        /// <summary>
+        /// Checks given move path is valid or not.
+        /// </summary>
+        /// <param name="movepath">Move path which taken for rover.</param>
+        /// <returns></returns>
+        public string CheckMovePath(string movepath)
+        {
+            if (movepath == "")
+                return (Errors.Errors.MoveCreationError.MCE03);
+            MoveEnums.MovePath[] final = new MoveEnums.MovePath[movepath.Length];
+            int pathcounter = 0;
+            foreach (char c in movepath)
+            {
+                if (!char.IsLetter(c) || !char.IsUpper(c) || !(c == 'L' || c == 'M' || c == 'R'))
+                    return Errors.Errors.MoveCreationError.MCE01 + " " + Errors.Errors.MoveCreationError.MCE02;
+                else
+                {
+                    if (c == 'L')
+                        final[pathcounter] = MoveEnums.MovePath.L;
+                    else if (c == 'M')
+                        final[pathcounter] = MoveEnums.MovePath.M;
+                    else
+                        final[pathcounter] = MoveEnums.MovePath.R;
+                }
+                pathcounter++;
+            }
+            this.MovePaths = final;
+            return null;
+        }
 
     }
 }
