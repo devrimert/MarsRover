@@ -24,9 +24,9 @@ namespace MarsRover.Errors
         internal static class RoverCreationErrors
         {
             /// <summary>
-            /// Rovers position data can only consist of numbers.
+            /// Rovers position data can only consist of 2 numbers.
             /// </summary>
-            internal const string RCE01 = "Rovers position data can only consist of numbers.";
+            internal const string RCE01 = "Rovers position data can only consist of 2 numbers.";
             /// <summary>
             /// Rovers position data can not be left blank.
             /// </summary>
@@ -40,17 +40,13 @@ namespace MarsRover.Errors
             /// </summary>
             internal const string RCE04 = "Rovers route data can consist only one capital character.('N', 'W', 'S', 'E')";
             /// <summary>
-            /// Rovers route data can not be left blank.
-            /// </summary>
-            internal const string RCE05 = "Rovers route data can not be left blank.";
-            /// <summary>
             /// There is another rover in given position for rover.
             /// </summary>
-            internal const string RCE06 = "There is another rover in given position for rover.";
+            internal const string RCE05 = "There is another rover in given position for rover.";
             /// <summary>
             /// Given position for rover is out of plateaus range.
             /// </summary>
-            internal const string RCE07 = "Given position for rover is out of plateaus range.";
+            internal const string RCE06 = "Given position for rover is out of plateaus range.";
         }
         internal static class MoveCreationError
         {

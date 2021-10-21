@@ -14,6 +14,8 @@ Plateau Creating process Finished
 Rover Creating Process Started
 	Rover Object Created
 		Position Object Created
-			Check Position Created
-		Route Object Created
-			CheckRoute Created
+			Route Enum Created
+			CheckPosition Function Created
+		Position Object Finished
+	Rover Object Finished
+

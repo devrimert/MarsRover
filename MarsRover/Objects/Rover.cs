@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
+using MarsRover.Enums;
 
 namespace MarsRover.Objects
 {
@@ -8,86 +10,66 @@ namespace MarsRover.Objects
     {
         public int ID { get; set; }
         public Position Position { get; set; }
-        public RoverRoute.Route Route { get; set; }
         public bool IsBlocked { get; set; }
+        public string moveString { get; set; }
 
-        public Rover(Plateau plateau)
+        public Rover()
         {
             Position = new Position();
-            Route = new RoverRoute.Route();
-            IsBlocked = false;
         }
-        //public bool Move(Plateau plateau, RoverRoute.Route route, Coordinate newCoordinate)
-        //{
-            
-        //    switch (Route)
-        //    {
-        //        case RoverRoute.Route.N:
-        //            {
-        //                Coordinate newCoord = new Coordinate();
-        //                newCoord.X = this.Position.X;
-        //                newCoord.Y = this.Position.Y++;
-        //                foreach (Rover rover in plateau.Rovers)
-        //                {
-        //                    if (this.Equals(rover) == false)
-        //                    {
-                                
-                         
-        //                    }
-        //                }
-        //                break;
-        //            }
-        //        case RoverRoute.Route.E:
-        //            {
-        //                Coordinate newCoord = new Coordinate();
-        //                newCoord.X = this.Position.X;
-        //                newCoord.Y = this.Position.Y++;
-        //                break;
-        //            }
-        //        case RoverRoute.Route.S:
-        //            {
-        //                Coordinate newCoord = new Coordinate();
-        //                newCoord.X = this.Position.X;
-        //                newCoord.Y = this.Position.Y++;
-        //                break;
-        //            }
-        //        case RoverRoute.Route.W:
-        //            {
-        //                Coordinate newCoord = new Coordinate();
-        //                newCoord.X = this.Position.X;
-        //                newCoord.Y = this.Position.Y++;
-        //                break;
-        //            }
-
-
-        //    }
-
-        //    return false;
-        //}
-
-        //public void Move()
-        //{
-
-        //}
+      
     }
 
     public class Position
     {
         public int X { get; set; }
         public int Y { get; set; }
+        
+        public RouteEnums.Route Route { get; set; }
+
+        public string CheckPosition(string position, Plateau plateau)
+        {
+            if (position == "")
+                return (Errors.Errors.RoverCreationErrors.RCE02);
+            string[] totalPos = position.Split(" ");
+            string[] coords = { totalPos[0], totalPos[1] };
+
+            if (position == null || coords.Length != 2)
+                return (Errors.Errors.RoverCreationErrors.RCE03);
+            if (!Regex.IsMatch(coords[0], "^[0-9]*$") || !Regex.IsMatch(coords[1], "^[0-9]*$"))
+                return (Errors.Errors.RoverCreationErrors.RCE01);
+            char[] route = totalPos[2].ToCharArray();
+            if (!char.IsLetter(route[0]) || !char.IsUpper(route[0]) || !(route[0] == 'N' || route[0] == 'S' || route[0] == 'W' || route[0] == 'E') )
+                return (Errors.Errors.RoverCreationErrors.RCE04);
+            else
+            {
+                if (route[0] == 'N')
+                    this.Route = RouteEnums.Route.N;
+                else if (route[0] == 'E')
+                    this.Route = RouteEnums.Route.E;
+                else if (route[0] == 'S')
+                    this.Route = RouteEnums.Route.S;
+                else
+                    this.Route = RouteEnums.Route.W;
+            }
+            if (Convert.ToInt32(coords[0]) > plateau.MaxRange.X || Convert.ToInt32(coords[1]) > plateau.MaxRange.Y)
+                return Errors.Errors.RoverCreationErrors.RCE06;
+            foreach(Rover rover in plateau.Rovers)
+            {
+                if (this.X.Equals(rover.Position.X)&&this.Y.Equals(rover.Position.Y))
+                    return Errors.Errors.RoverCreationErrors.RCE05;
+            }
 
 
+            this.X = Convert.ToInt32(coords[0]);
+            this.Y = Convert.ToInt32(coords[1]);
+            
+
+            return null;
+        }
     }
-    public class RoverRoute
+    public class Move
     {
-        public enum Route : byte
-        {
-            N=0,   E=1,  S=2,  W=3
-        }
-        public static string ToString(Route Route)
-        {
-            return Enum.GetName(typeof(Route),Route);
-        }
 
     }
 }
