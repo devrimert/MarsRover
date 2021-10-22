@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using MarsRover.Objects;
-using MarsRover.Errors;
 using System.Text.RegularExpressions;
 
 namespace MarsRover.Objects
@@ -41,16 +38,17 @@ namespace MarsRover.Objects
         public string CheckRange(string CoordinateString)
         {
             MaxRange coordinate = new MaxRange();
-            if (CoordinateString == "")
+            //Check Values
+            if (CoordinateString == "")                                                                         //Checks coordinate string left blank by user or not.
                 return (Errors.Errors.PlateauCreationErrors.PCE02);
             string[] coords = CoordinateString.Split(" ");
 
-            if (CoordinateString == null || coords.Length != 2)
+            if (CoordinateString == null || coords.Length != 2)                                                 //Checks is coordinate string valid or not.
                 return (Errors.Errors.PlateauCreationErrors.PCE03);
-            if (!Regex.IsMatch(coords[0], "^[0-9]*$") || !Regex.IsMatch(coords[1], "^[0-9]*$"))
+            if (!Regex.IsMatch(coords[0], "^[0-9]*$") || !Regex.IsMatch(coords[1], "^[0-9]*$"))                 //Checks is coordinate string consist of numbers or not.
                 return (Errors.Errors.PlateauCreationErrors.PCE01);
-
-            this.X = Convert.ToInt32(coords[0]);
+            //Write Values
+            this.X = Convert.ToInt32(coords[0]);                                                                    
             this.Y = Convert.ToInt32(coords[1]);
             return null;
         }

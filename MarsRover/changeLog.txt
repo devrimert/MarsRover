@@ -3,7 +3,7 @@
 ========== Author: Devrim Mert Yoyen===============
 ============== Start: 20/10/2021 ==================
 
-______________20/10/2020_________________
+______________20/10/2021_________________
 Plateau Creating process Started
 	Plateau Object Created
 		Max Range Object Created
@@ -18,12 +18,15 @@ Rover Creating Process Started
 			CheckPosition Function Created
 		Position Object Finished
 	Rover Object Finished
-	______________21/10/2020_________________
+	______________21/10/2021_________________
 	Rover addition mechanic added
 	Answer Check and loop added
 	all creation processes are done
 	Move mechanic added
 	Route Check added
 	Crash mechanic added
+	Unit tests added
+	Comments and instructions added.
 
+	========== Finish = 21/10/2021
 

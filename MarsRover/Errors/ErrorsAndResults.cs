@@ -1,5 +1,7 @@
 ﻿namespace MarsRover.Errors
 {
+    // XXX = Message Type
+    // 00 = Message Number
     internal static class Errors
     {
         internal static class PlateauCreationErrors

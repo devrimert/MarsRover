@@ -10,7 +10,9 @@ namespace MarsRover
         {
             string errStr;
             bool success = false;
+            //Start
             Console.WriteLine("To begin to explore, please create a plateau and rovers");
+            //Create Plateau
             Plateau plateau = new Plateau();         
             while (!success)
             {
@@ -25,11 +27,12 @@ namespace MarsRover
             }            
             bool addRover = true;
             int roverCount = 1;
-            
-            while (addRover)
+            //Add Rovers
+            while (addRover) //While keep adding new rovers.
             {
                 Rover rover = new Rover();
                 success = false;
+                //Add rover position
                 while (!success)
                 {
                     Console.WriteLine("Please Enter Rover " + roverCount.ToString() + "'s coordinates and route.");
@@ -40,6 +43,7 @@ namespace MarsRover
                     else
                         success = true;
                 }
+                //Add move path.
                 Move move = new Move();
                 success = false;
                 while (!success)
@@ -55,7 +59,9 @@ namespace MarsRover
                 rover.MovePath = move;               
                 rover.ID = roverCount;
                 roverCount++;
+                // add rover to plateau.
                 plateau.AddRover(rover);
+                //ask user wants to keep adding rovers or not.
                 ConsoleKey response;
                 do
                 {
@@ -67,13 +73,13 @@ namespace MarsRover
                 if (response == ConsoleKey.N)
                     addRover = false;
             }
-            
+            //Move rovers on plateau and print the result.
             for (int i =0; i<plateau.Rovers.Count; i++) {
                 plateau.Rovers[i].MoveResult = plateau.Rovers[i].Move(plateau);
                 Console.WriteLine("Rover " + plateau.Rovers[i].ID.ToString() + ": " + plateau.Rovers[i].Position.X.ToString() + " " + plateau.Rovers[i].Position.Y + " " +  RouteEnums.RouteEnumToString(plateau.Rovers[i].Position.Route) + " | " + plateau.Rovers[i].MoveResult);
             }
 
-            
+            //Done.
           
         }
     }
