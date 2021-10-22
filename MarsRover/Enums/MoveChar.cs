@@ -15,9 +15,9 @@ namespace MarsRover.Enums
         /// </summary>
         /// <param name="Route"></param>
         /// <returns></returns>
-        public static string MoveEnumToString(MovePath Route)
+        public static string MoveEnumToString(MovePath Path)
         {
-            return Enum.GetName(typeof(MovePath), Route);
+            return Enum.GetName(typeof(MovePath), Path);
         }
     }
 }

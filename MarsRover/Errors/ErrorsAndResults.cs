@@ -15,7 +15,7 @@
             /// <summary>
             /// Invalid plateaus size data."
             /// </summary>
-            internal const string PCE03 = "Invalid plateaus size data.";    
+            internal const string PCE03 = "Invalid plateaus size data.";
         }
         internal static class RoverCreationErrors
         {
@@ -60,16 +60,25 @@
             internal const string MCE03 = "Rovers move data can not be left blank.";
 
         }
-        internal static class RoverMoveErrors
+    }
+    internal static class Results
+    {
+        internal static class RoverMoveResults
         {
             /// <summary>
-            /// Desired position for rover is out if plateaus range.
+            /// The rover is reached plateaus boundry during the move.
             /// </summary>
-            internal const string RME01 = "Desired position for rover is out if plateaus range.";
+            internal const string RMR01 = "The rover is reached plateaus boundry during the move.";
             /// <summary>
-            /// There is another rover in desired position.
+            /// The rover is blocked by another rover.
             /// </summary>
-            internal const string RME02 = "There is another rover in desired position.";
+            internal const string RMR02 = "The rover is blocked by another rover.";
+            /// <summary>
+            /// The rover is moved to desired position successfuly.
+            /// </summary>
+            internal const string RMR03 = "The rover is moved to desired position successfuly.";
         }
     }
+       
 }
+

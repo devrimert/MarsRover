@@ -1,5 +1,6 @@
 ﻿using System;
 using MarsRover.Objects;
+using MarsRover.Enums;
 
 namespace MarsRover
 {
@@ -51,7 +52,7 @@ namespace MarsRover
                     else
                         success = true;
                 }                              
-                rover.Move = move;               
+                rover.MovePath = move;               
                 rover.ID = roverCount;
                 roverCount++;
                 plateau.AddRover(rover);
@@ -67,6 +68,11 @@ namespace MarsRover
                     addRover = false;
             }
             
+            for (int i =0; i<plateau.Rovers.Count; i++) {
+                plateau.Rovers[i].MoveResult = plateau.Rovers[i].Move(plateau);
+                Console.WriteLine("Rover " + plateau.Rovers[i].ID.ToString() + ": " + plateau.Rovers[i].Position.X.ToString() + " " + plateau.Rovers[i].Position.Y + " " +  RouteEnums.RouteEnumToString(plateau.Rovers[i].Position.Route) + " | " + plateau.Rovers[i].MoveResult);
+            }
+
             
           
         }
