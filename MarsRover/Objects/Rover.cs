@@ -9,7 +9,6 @@ namespace MarsRover.Objects
     {
         public int ID { get; set; }
         public Position Position { get; set; }
-        public bool IsBlocked { get; set; }
         public Move MovePath { get; set; }
         public string MoveResult { get; set; }
 
